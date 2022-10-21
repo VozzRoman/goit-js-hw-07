@@ -3,6 +3,7 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
+//1)
 function createMarkUpImage(galleryItems) {
 	return galleryItems.map(image => {
 		return `
@@ -29,19 +30,9 @@ const imageElementConatainer = document.querySelector('.gallery');
 
 imageElementConatainer.innerHTML = refsLinkElement;
 
-// imageElementConatainer.addEventListener('click', onImageClick);
-
-
-// function onImageClick(e) {
-// 	e.preventDefault();
-// 	let gallery = new SimpleLightbox('.gallery a');
-// gallery.on('show.simplelightbox', function () {
-	
-// });
-
-// }
-
-var lightbox = new SimpleLightbox('.gallery a',
+//---LightBox----
+//2)
+const lightbox = new SimpleLightbox('.gallery a',
 	{
 		captionsData: 'alt',
 		captionDelay: 250,

@@ -2,6 +2,8 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 console.log(galleryItems);
+
+//1)
 function createMarkUpImage(galleryItems) {
 	return galleryItems.map(image => {
 		return `
@@ -25,20 +27,41 @@ console.log(galleryContainer);
 //ссылка на элемент
 const createElementImage = createMarkUpImage(galleryItems);
 console.log(createElementImage);
-
 galleryContainer.innerHTML = createElementImage;
 
 
-galleryContainer.addEventListener('click',onClickImage);
-
-function onClickImage(e) {
+//2)
+galleryContainer.addEventListener('click', onClickOpenImage);
+function onClickOpenImage(e) {
 	e.preventDefault();
 	const bigPicture = e.target.dataset.source;
-	console.log(bigPicture);
 	const instance = basicLightbox.create(`
     <img src="${bigPicture}" width="800" height="600">
 `)
+	instance.show();
+	
+		window.addEventListener('keydown', onEscPres);
+		function onEscPres(e) {
+		if (e.key === 'ESCAPE');
+		console.log("esc");
+		window.removeEventListener('keydown', onEscPres);
+		instance.close();
+	}
 
-	instance.show()
 }
+
+
+
+
+		
+	
+
+	
+
+	
+	
+		
+	
+
+
 
