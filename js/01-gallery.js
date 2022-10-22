@@ -32,23 +32,29 @@ galleryContainer.innerHTML = createElementImage;
 
 //2)
 galleryContainer.addEventListener('click', onClickOpenImage);
+
 function onClickOpenImage(e) {
 	e.preventDefault();
 	const bigPicture = e.target.dataset.source;
 	const instance = basicLightbox.create(`
     <img src="${bigPicture}" width="800" height="600">
-`)
+`, {
+		onShow: () => { document.addEventListener('keydown', onEscPres); },
+		onClose: () => {document.removeEventListener('keydown', onEscPres);}
+})
 	instance.show();
+
 	
-		window.addEventListener('keydown', onEscPres);
+		
 		function onEscPres(e) {
 		if (e.key === 'ESCAPE');
 		console.log("esc");
-		window.removeEventListener('keydown', onEscPres);
 		instance.close();
 	}
 
 }
+
+
 
 
 
